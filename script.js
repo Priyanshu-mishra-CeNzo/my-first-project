@@ -1,7 +1,7 @@
-```javascript
-// ============================================
+javascript
+
 // SOAP SHOP JAVASCRIPT
-// ============================================
+
 
 
 // CART
@@ -39,9 +39,9 @@ const searchInput =
     document.getElementById("searchInput");
 
 
-// ============================================
+
 // GET PRODUCTS FROM HTML
-// ============================================
+
 
 function getProducts() {
 
@@ -79,9 +79,9 @@ function getProducts() {
 }
 
 
-// ============================================
+
 // ADD PRODUCT TO CART
-// ============================================
+
 
 function addToCart(product) {
 
@@ -126,9 +126,9 @@ function addToCart(product) {
 }
 
 
-// ============================================
+
 // UPDATE CART
-// ============================================
+
 
 function updateCart() {
 
@@ -233,9 +233,8 @@ function updateCart() {
 }
 
 
-// ============================================
 // CHANGE QUANTITY
-// ============================================
+
 
 function changeQuantity(productId, amount) {
 
@@ -271,9 +270,9 @@ function changeQuantity(productId, amount) {
 }
 
 
-// ============================================
+
 // REMOVE PRODUCT
-// ============================================
+
 
 function removeProduct(productId) {
 
@@ -290,9 +289,8 @@ function removeProduct(productId) {
 }
 
 
-// ============================================
 // ADD BUTTONS
-// ============================================
+
 
 function setupAddButtons() {
 
@@ -344,9 +342,8 @@ function setupAddButtons() {
 }
 
 
-// ============================================
 // OPEN CART
-// ============================================
+
 
 cartButton.addEventListener(
     "click",
@@ -358,9 +355,9 @@ cartButton.addEventListener(
 );
 
 
-// ============================================
+
 // CLOSE CART
-// ============================================
+
 
 closeCart.addEventListener(
     "click",
@@ -372,9 +369,9 @@ closeCart.addEventListener(
 );
 
 
-// ============================================
+
 // CLOSE MODAL OUTSIDE
-// ============================================
+
 
 cartModal.addEventListener(
     "click",
@@ -390,9 +387,8 @@ cartModal.addEventListener(
 );
 
 
-// ============================================
+
 // CHECKOUT
-// ============================================
 
 checkoutButton.addEventListener(
     "click",
@@ -437,9 +433,9 @@ checkoutButton.addEventListener(
 );
 
 
-// ============================================
+
 // SEARCH PRODUCTS
-// ============================================
+
 
 searchInput.addEventListener(
     "input",
@@ -481,9 +477,8 @@ searchInput.addEventListener(
 );
 
 
-// ============================================
+
 // START WEBSITE
-// ============================================
 
 setupAddButtons();
 
