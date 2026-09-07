@@ -1,0 +1,1070 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PureGlow Soap Shop</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff8f3;
+    color: #333;
+}
+
+header {
+    background: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #d47750;
+}
+
+.cart-btn {
+    background: #d47750;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.hero {
+    padding: 70px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 450px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #d47750;
+}
+
+.hero p {
+    color: #777;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.hero-icon {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: #f4d1bd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 130px;
+}
+
+.products-section {
+    padding: 60px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title p {
+    color: #d47750;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.section-title h2 {
+    font-size: 40px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #ddd;
+}
+
+.product-image {
+    height: 210px;
+    background: #f5dfd3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 85px;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 45px;
+    margin-bottom: 20px;
+}
+
+.product-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    color: #d47750;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.add-btn {
+    border: none;
+    background: #d47750;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.cart-modal,
+.checkout-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    background: white;
+    width: 550px;
+    max-width: 92%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 30px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    right: 18px;
+    top: 10px;
+    border: none;
+    background: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.modal-box h2 {
+    margin-bottom: 25px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quantity button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background: #f2d0bd;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    padding: 25px 0;
+}
+
+.checkout-btn,
+.whatsapp-btn {
+    width: 100%;
+    border: none;
+    padding: 15px;
+    border-radius: 30px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.checkout-btn {
+    background: #d47750;
+}
+
+.whatsapp-btn {
+    background: #25D366;
+    margin-top: 15px;
+}
+
+.back-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 30px;
+    background: white;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.form-group textarea {
+    height: 90px;
+    resize: vertical;
+}
+
+.payment-title {
+    margin: 25px 0 15px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.payment-option:hover {
+    border-color: #d47750;
+}
+
+.payment-option input {
+    width: 18px;
+    height: 18px;
+}
+
+.payment-details {
+    display: none;
+    background: #fff7f1;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+@media (max-width: 900px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero-icon {
+        width: 220px;
+        height: 220px;
+        font-size: 100px;
+    }
+
+    .cart-item {
+        flex-wrap: wrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🧼 PureGlow</div>
+
+    <button class="cart-btn" onclick="openCart()">
+        🛒 Cart (<span id="cartCount">0</span>)
+    </button>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Natural Soap for <span>Healthy Skin</span></h1>
+
+        <p>
+            Handmade soaps made with care.
+            Choose your favorite soap and order
+            directly through WhatsApp.
+        </p>
+    </div>
+
+    <div class="hero-icon">🧼</div>
+</section>
+
+<section class="products-section">
+
+    <div class="section-title">
+        <p>OUR PRODUCTS</p>
+        <h2>Best Selling Soaps</h2>
+    </div>
+
+    <div class="products">
+
+        <div class="product-card">
+            <div class="product-image">🪻</div>
+            <div class="product-info">
+                <h3>Lavender Bliss</h3>
+                <p>Relaxing lavender soap for soft skin.</p>
+
+                <div class="product-bottom">
+                    <span class="price">Rs. 180</span>
+
+                    <button class="add-btn"
+                        onclick="addToCart('Lavender Bliss',180,'🪻')">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">🍯</div>
+            <div class="product-info">
+                <h3>Honey & Oat</h3>
+                <p>Gentle moisturizing soap with honey and oats.</p>
+
+                <div class="product-bottom">
+                    <span class="price">Rs. 220</span>
+
+                    <button class="add-btn"
+                        onclick="addToCart('Honey & Oat',220,'🍯')">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">🌹</div>
+            <div class="product-info">
+                <h3>Rose Garden</h3>
+                <p>Beautiful rose fragrance with natural oils.</p>
+
+                <div class="product-bottom">
+                    <span class="price">Rs. 200</span>
+
+                    <button class="add-btn"
+                        onclick="addToCart('Rose Garden',200,'🌹')">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">🌿</div>
+            <div class="product-info">
+                <h3>Aloe Fresh</h3>
+                <p>Refreshing aloe vera soap for everyday use.</p>
+
+                <div class="product-bottom">
+                    <span class="price">Rs. 190</span>
+
+                    <button class="add-btn"
+                        onclick="addToCart('Aloe Fresh',190,'🌿')">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">🖤</div>
+            <div class="product-info">
+                <h3>Charcoal Detox</h3>
+                <p>Deep cleansing activated charcoal soap.</p>
+
+                <div class="product-bottom">
+                    <span class="price">Rs. 250</span>
+
+                    <button class="add-btn"
+                        onclick="addToCart('Charcoal Detox',250,'🖤')">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">🥥</div>
+            <div class="product-info">
+                <h3>Coconut Cream</h3>
+                <p>Rich coconut soap for smooth-looking skin.</p>
+
+                <div class="product-bottom">
+                    <span class="price">Rs. 210</span>
+
+                    <button class="add-btn"
+                        onclick="addToCart('Coconut Cream',210,'🥥')">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">🍋</div>
+            <div class="product-info">
+                <h3>Lemon Fresh</h3>
+                <p>Fresh lemon fragrance for a clean feeling.</p>
+
+                <div class="product-bottom">
+                    <span class="price">Rs. 170</span>
+
+                    <button class="add-btn"
+                        onclick="addToCart('Lemon Fresh',170,'🍋')">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image">🌳</div>
+            <div class="product-info">
+                <h3>Sandalwood</h3>
+                <p>Premium sandalwood soap with warm fragrance.</p>
+
+                <div class="product-bottom">
+                    <span class="price">Rs. 280</span>
+
+                    <button class="add-btn"
+                        onclick="addToCart('Sandalwood',280,'🌳')">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 PureGlow Soap Shop</p>
+</footer>
+
+
+<!-- CART -->
+
+<div id="cartModal" class="cart-modal">
+
+    <div class="modal-box">
+
+        <button class="close-btn" onclick="closeCart()">×</button>
+
+        <h2>🛒 Your Cart</h2>
+
+        <div id="cartItems"></div>
+
+        <div class="total">
+            <strong>Total</strong>
+            <strong>Rs. <span id="cartTotal">0</span></strong>
+        </div>
+
+        <button class="checkout-btn" onclick="openCheckout()">
+            Proceed to Checkout
+        </button>
+
+    </div>
+</div>
+
+
+<!-- CHECKOUT -->
+
+<div id="checkoutModal" class="checkout-modal">
+
+    <div class="modal-box">
+
+        <button class="close-btn" onclick="closeCheckout()">×</button>
+
+        <h2>🧾 Customer Details</h2>
+
+        <div class="form-group">
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Enter your full name">
+        </div>
+
+        <div class="form-group">
+            <label>Mobile Number</label>
+
+            <input
+                type="tel"
+                id="customerPhone"
+                placeholder="98XXXXXXXX"
+                maxlength="10">
+        </div>
+
+        <div class="form-group">
+            <label>Delivery Address</label>
+
+            <textarea
+                id="customerAddress"
+                placeholder="Enter your delivery address"></textarea>
+        </div>
+
+
+        <h3 class="payment-title">
+            💳 Payment Method
+        </h3>
+
+
+        <label class="payment-option">
+
+            <input
+                type="radio"
+                name="payment"
+                value="eSewa"
+                onclick="showPayment('esewa')">
+
+            <span>💚 eSewa</span>
+
+        </label>
+
+        <div id="esewaDetails" class="payment-details">
+
+            <strong>eSewa Number:</strong>
+            9812345678
+
+            <br>
+
+            Send the payment and keep your
+            transaction ID.
+
+        </div>
+
+
+        <label class="payment-option">
+
+            <input
+                type="radio"
+                name="payment"
+                value="Khalti"
+                onclick="showPayment('khalti')">
+
+            <span>💜 Khalti</span>
+
+        </label>
+
+        <div id="khaltiDetails" class="payment-details">
+
+            <strong>Khalti Number:</strong>
+            9812345678
+
+            <br>
+
+            Send the payment and keep your
+            transaction ID.
+
+        </div>
+
+
+        <label class="payment-option">
+
+            <input
+                type="radio"
+                name="payment"
+                value="Bank Transfer"
+                onclick="showPayment('bank')">
+
+            <span>🏦 Bank Transfer</span>
+
+        </label>
+
+        <div id="bankDetails" class="payment-details">
+
+            <strong>Bank:</strong>
+            Your Bank Name
+
+            <br>
+
+            <strong>Account Name:</strong>
+            PureGlow Soap Shop
+
+            <br>
+
+            <strong>Account Number:</strong>
+            000000000000
+
+            <br>
+
+            <strong>Branch:</strong>
+            Kathmandu
+
+        </div>
+
+
+        <div class="total">
+            <strong>Order Total</strong>
+
+            <strong>
+                Rs. <span id="checkoutTotal">0</span>
+            </strong>
+        </div>
+
+
+        <button class="whatsapp-btn" onclick="sendWhatsAppOrder()">
+            💬 Send Order to WhatsApp
+        </button>
+
+        <button class="back-btn" onclick="closeCheckout()">
+            ← Back
+        </button>
+
+    </div>
+</div>
+
+
+<script>
+
+const whatsappNumber = "9779812345678";
+
+let cart = [];
+
+
+function addToCart(name, price, icon) {
+
+    const existingItem = cart.find(function(item) {
+        return item.name === name;
+    });
+
+    if (existingItem) {
+
+        existingItem.quantity++;
+
+    } else {
+
+        cart.push({
+            name: name,
+            price: price,
+            icon: icon,
+            quantity: 1
+        });
+
+    }
+
+    updateCart();
+
+    alert(name + " added to cart");
+
+}
+
+
+function updateCart() {
+
+    const cartItems = document.getElementById("cartItems");
+
+    const cartCount = document.getElementById("cartCount");
+
+    const cartTotal = document.getElementById("cartTotal");
+
+    cartItems.innerHTML = "";
+
+    let totalQuantity = 0;
+
+    let totalPrice = 0;
+
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML =
+            "<p style='text-align:center;padding:30px'>Your cart is empty</p>";
+
+    }
+
+
+    cart.forEach(function(item, index) {
+
+        totalQuantity += item.quantity;
+
+        totalPrice += item.price * item.quantity;
+
+
+        const itemDiv = document.createElement("div");
+
+        itemDiv.className = "cart-item";
+
+
+        itemDiv.innerHTML =
+
+            "<div>" +
+            "<strong>" +
+            item.icon + " " +
+            item.name +
+            "</strong>" +
+            "<br>" +
+            "<small>Rs. " +
+            item.price +
+            "</small>" +
+            "</div>" +
+
+            "<div class='quantity'>" +
+
+            "<button onclick='changeQuantity(" +
+            index +
+            ", -1)'>−</button>" +
+
+            "<span>" +
+            item.quantity +
+            "</span>" +
+
+            "<button onclick='changeQuantity(" +
+            index +
+            ", 1)'>+</button>" +
+
+            "</div>" +
+
+            "<button class='remove-btn' onclick='removeItem(" +
+            index +
+            ")'>Remove</button>";
+
+
+        cartItems.appendChild(itemDiv);
+
+    });
+
+
+    cartCount.textContent = totalQuantity;
+
+    cartTotal.textContent = totalPrice.toLocaleString();
+
+}
+
+
+function changeQuantity(index, amount) {
+
+    cart[index].quantity += amount;
+
+    if (cart[index].quantity <= 0) {
+
+        cart.splice(index, 1);
+
+    }
+
+    updateCart();
+
+}
+
+
+function removeItem(index) {
+
+    cart.splice(index, 1);
+
+    updateCart();
+
+}
+
+
+function openCart() {
+
+    document.getElementById("cartModal").style.display = "flex";
+
+}
+
+
+function closeCart() {
+
+    document.getElementById("cartModal").style.display = "none";
+
+}
+
+
+function openCheckout() {
+
+    if (cart.length === 0) {
+
+        alert("Your cart is empty");
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+    cart.forEach(function(item) {
+
+        total += item.price * item.quantity;
+
+    });
+
+
+    document.getElementById("checkoutTotal").textContent =
+        total.toLocaleString();
+
+
+    document.getElementById("cartModal").style.display = "none";
+
+    document.getElementById("checkoutModal").style.display = "flex";
+
+}
+
+
+function closeCheckout() {
+
+    document.getElementById("checkoutModal").style.display = "none";
+
+}
+
+
+function showPayment(method) {
+
+    document.getElementById("esewaDetails").style.display = "none";
+
+    document.getElementById("khaltiDetails").style.display = "none";
+
+    document.getElementById("bankDetails").style.display = "none";
+
+
+    if (method === "esewa") {
+
+        document.getElementById("esewaDetails").style.display = "block";
+
+    }
+
+
+    if (method === "khalti") {
+
+        document.getElementById("khaltiDetails").style.display = "block";
+
+    }
+
+
+    if (method === "bank") {
+
+        document.getElementById("bankDetails").style.display = "block";
+
+    }
+
+}
+
+
+function sendWhatsAppOrder() {
+
+    const name =
+        document.getElementById("customerName").value.trim();
+
+    const phone =
+        document.getElementById("customerPhone").value.trim();
+
+    const address =
+        document.getElementById("customerAddress").value.trim();
+
+    const payment =
+        document.querySelector(
+            "input[name='payment']:checked"
+        );
+
+
+    if (name === "") {
+
+        alert("Please enter your name");
+
+        return;
+
+    }
+
+
+    if (phone === "") {
+
+        alert("Please enter your mobile number");
+
+        return;
+
+    }
+
+
+    if (!/^[0-9]{10}$/.test(phone)) {
+
+        alert("Please enter a valid 10 digit mobile number");
+
+        return;
+
+    }
+
+
+    if (address === "") {
+
+        alert("Please enter your delivery address");
+
+        return;
+
+    }
+
+
+    if (!payment) {
+
+        alert("Please select a payment method");
+
+        return;
+
+    }
+
+
+    let message = "NEW SOAP ORDER\n\n";
+
+    message += "Customer Name: " + name + "\n";
+
+    message += "Mobile Number: " + phone + "\n";
+
+    message += "Delivery Address: " + address + "\n";
+
+    message += "Payment Method: " + payment.value + "\n\n";
+
+    message += "ORDER DETAILS\n";
+
+    message += "--------------------\n";
+
+
+    let total = 0;
+
+
+    cart.forEach(function(item) {
+
+        const itemTotal =
+            item.price * item.quantity;
+
+        total += itemTotal;
+
+
+        message +=
+            item.name +
+            " x " +
+            item.quantity +
+            " = Rs. " +
+            itemTotal +
+            "\n";
+
+    });
+
+
+    message += "--------------------\n";
+
+    message += "TOTAL: Rs. " + total + "\n\n";
+
+    message += "Thank you for your order!";
+
+
+    const whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+    window.open(whatsappURL, "_blank");
+
+}
+
+
+updateCart();
+
+</script>
+
+</body>
+</html>
+
